@@ -21,11 +21,26 @@
             $test_Animal->saveAnimal();
 
             $result_name = '';
-            $returned_results = $GLOBALS['DB']->query("SELECT * FROM animals ORDER BY id ASC;");
+            $returned_results = $GLOBALS['DB']->query("SELECT * FROM animals;");
             foreach ($returned_results as $result) {
                 $result_name = $result['name'];
             }
             $this->assertEquals($input_name, $result_name);
+        }
+
+        function test_getAll()
+        {
+            $name = "Fido";
+            $test_animal = new Animal($name);
+            $test_animal->saveAnimal();
+
+            $name2 = "Lassie";
+            $test_animal2 = new Animal($name2);
+            $test_animal2->saveAnimal();
+
+            $result = Animal::getAll();
+
+            $this->assertEquals([$test_animal, $test_animal2], $result);
         }
     }
 

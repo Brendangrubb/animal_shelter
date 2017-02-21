@@ -24,14 +24,17 @@
                 $GLOBALS['DB']->exec("INSERT INTO animals (name) VALUES ('{$this->getName()}');");
             }
 
-            // static function getAll()
-            // {
-            //     $returned_names = $GLOBALS['DB']->query("SELECT * FROM animals;");
-            //     $animals = array();
-            //     foreach ($returned_names as $names) {
-            //         $name =
-            //     }
-            // }
+            static function getAll()
+            {
+                $returned_animals = $GLOBALS['DB']->query("SELECT * FROM animals;");
+                $animals = array();
+                foreach ($returned_animals as $animal) {
+                    $name = $animal['name'];
+                    $new_animal = new Animal($name);
+                    array_push($animals, $new_animal);
+                }
+                return $animals;
+            }
 
     }
 
