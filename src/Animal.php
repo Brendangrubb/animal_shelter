@@ -36,6 +36,12 @@
                 return $animals;
             }
 
+            static function deleteAll()
+            {
+                $GLOBALS['DB']->exec("DELETE FROM animals;");
+                $GLOBALS['DB']->exec("DELETE FROM tasks;");
+            }
+
     }
 
 
