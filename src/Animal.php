@@ -1,10 +1,10 @@
 <?php
-    class Animals
+    class Animal
     {
 
             private $name;
 
-            function __contstruct($name)
+            function __construct($name)
             {
                 $this->name = $name;
             }
@@ -21,7 +21,7 @@
 
             function saveAnimal()
             {
-                $GLOBALS['DB']->exec("INSERT INTO animals (name) VALUES ('{$this->getName()}')");
+                $GLOBALS['DB']->exec("INSERT INTO animals (name) VALUES ('{$this->getName()}');");
             }
 
             // static function getAll()
