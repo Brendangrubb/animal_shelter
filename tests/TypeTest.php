@@ -25,5 +25,20 @@
             $test_type->saveType();
 
         }
+
+        function test_getAll()
+        {
+            $input_type = "cat";
+            $test_type = new Type($input_type);
+            $test_type->saveType();
+
+            $input_type2 = "dog";
+            $test_type2 = new Type($input_type2);
+            $test_type2->saveType();
+
+            $result = Type::getAll();
+
+            $this->assertEquals([$test_type, $test_type2], $result);
+        }
     }
 ?>
